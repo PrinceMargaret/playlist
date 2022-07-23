@@ -28,6 +28,17 @@ function getPlayLists() {
     });
 }
 
+function getSinglePlayList(){
+    return new Promise((resolve, reject) => {
+        PlayList.findOne({ _id: playlistId }, (err, data) => {
+            if (!err) {
+                resolve(data);
+            } else {
+                reject(err);
+            }
+        });
+    });
+}
 
 function AddSongToPlayList(playlistId, songdata) {
     console.log(playlistId, songdata);
