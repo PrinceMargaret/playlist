@@ -4,7 +4,7 @@ const { getPlayLists, AddSongToPlayList,createPlaylist,getSinglePlayList,deleteP
 
 
 router.get('/getPlaylist', getPlayLists);
-router.get("/getPlaylist/:id", getSinglePlayList);
+router.get('/getSinglePlaylist/:id', getSinglePlayList);
 router.post('/createPlaylist',createPlaylist );
 router.post('/addSongToPlaylist/:playlistId', AddSongToPlayList);
 router.delete('/deletePlaylist/:id', deletePlaylist);

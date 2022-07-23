@@ -28,9 +28,9 @@ function getPlayLists() {
     });
 }
 
-function getSinglePlayList(){
+function getSinglePlayList(id){
     return new Promise((resolve, reject) => {
-        PlayList.findOne({ _id: playlistId }, (err, data) => {
+        PlayList.findOne({ _id: id }, (err, data) => {
             if (!err) {
                 resolve(data);
             } else {
@@ -72,4 +72,4 @@ function deletePlaylist(playlistId) {
         });
     });
 }
-module.exports = { createPlaylist, getPlayLists, AddSongToPlayList,deletePlaylist };
+module.exports = { createPlaylist, getPlayLists, AddSongToPlayList,deletePlaylist, getSinglePlayList };

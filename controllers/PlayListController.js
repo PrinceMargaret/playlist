@@ -22,6 +22,7 @@ function createPlaylist(req, res) {
 }
 
 function getSinglePlayList(req, res) {
+    console.log(req.params.id,"getSinglePlayList")
     repo.getSinglePlayList(req.params.id).then(data => {
         res.status(200).send(data);
     });
