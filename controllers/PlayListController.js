@@ -22,7 +22,7 @@ function createPlaylist(req, res) {
 }
 
 function getSinglePlayList(req, res) {
-    console.log(req.params.id,"getSinglePlayList")
+    //console.log(req.params.id,"getSinglePlayList")
     repo.getSinglePlayList(req.params.id).then(data => {
         res.status(200).send(data);
     });
@@ -34,4 +34,12 @@ function deletePlaylist(req, res) {
     });
 }
 
-module.exports = { getPlayLists, AddSongToPlayList, createPlaylist,getSinglePlayList,deletePlaylist };
+function deleteSongToPlaylist(req, res) {
+    console.log(req.params.SongId,"deleteSongToPlaylist")
+    repo.deleteSongToPlaylist(req.params.playlistId,req.params.SongId).then(data => {
+        res.status(200).send(data);
+    });
+}
+
+
+module.exports = { getPlayLists, AddSongToPlayList, createPlaylist,getSinglePlayList,deletePlaylist, deleteSongToPlaylist };

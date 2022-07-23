@@ -72,4 +72,42 @@ function deletePlaylist(playlistId) {
         });
     });
 }
-module.exports = { createPlaylist, getPlayLists, AddSongToPlayList,deletePlaylist, getSinglePlayList };
+
+function deleteSongToPlaylist(playlistId,songId) {
+    return new Promise((resolve, reject) => {
+        PlayList.findOne({ _id: playlistId }, (err, data) => {
+            if (!err) {
+                //console.log(data.songs,"data.songs")
+                data.songs.map((song,index)=>{
+                    console.log(song.favPlaylist[0].id,"songs id")
+                    if(song.favPlaylist[0].id==songId){
+                        data.songs.splice(index,1);
+                    }
+
+                }
+                )
+         
+
+
+              
+
+
+
+                //data.songs.pull(songId);
+                data.save((err) => {
+                    if (!err) {
+                        resolve('Song added to playlist');
+                    } else {
+                        reject(err);
+                    }
+                });
+            } else {
+                reject(err);
+            }
+        });
+    });
+}
+
+
+
+module.exports = { createPlaylist, getPlayLists, AddSongToPlayList,deletePlaylist, getSinglePlayList, deleteSongToPlaylist };
